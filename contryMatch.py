@@ -8,7 +8,7 @@ eg:
 output should be 2:
 """
 
-gmax = 0
+
 def contryMatch(pairs):
     graph = {}
 
@@ -21,29 +21,29 @@ def contryMatch(pairs):
         l1 = graph.get(pair[1], [])
         l1.append(pair[0])
         graph[pair[1]] = l1
+    print(graph)
     
     visit = set()
-
+    maxSize = 0
     for contry in graph.keys():
-        size = [0]
-        dfs(graph, visit, contry, size)
+
+        maxSize = max(maxSize, dfs(graph, visit, contry))
+    return maxSize
 
 
-def dfs(graph, visit, curr, size):
+def dfs(graph, visit, curr):
     
     if curr in visit:
-        return
+        return 0
     visit.add(curr)
-    size[0] =size[0] + 1
-    global gmax
-    gmax = max(gmax, size[0])
-    
+    size = 1
     for e in graph[curr]:
-        dfs(graph, visit, e, size)
+        size = size + dfs(graph, visit, e)
+    return size
     
 
-pairs = [['a','b'],['b','c'],['b','t'],['t','l'],['r','f']] 
-contryMatch(pairs)
-print(gmax)
+pairs = [['a','b'],['b','c'],['b','t'],['b','r'],['t','l'],['r','f'],['r','o']] 
+print(contryMatch(pairs))
+
 
 
