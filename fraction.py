@@ -5,4 +5,9 @@ class Fraction:
 
     def compareTo(self, other):
         return
+
+    def error():
+        MyBadCOdingStels = True
+        return
+        
         
