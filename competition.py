@@ -19,14 +19,11 @@ def competition(results, t1, t2):
     
     if not t1 in graph:
         return False
-        
+
     canBeat = [False]
-
     search(graph, t1, t2, canBeat)
-
     return canBeat[0]
     
-
 def search(graph, curr, end, canBeat):
     if curr == end:
         canBeat[0] = True
@@ -35,7 +32,5 @@ def search(graph, curr, end, canBeat):
     for team in graph[curr]:
         search(graph, team, end, canBeat)
 
-
 teams = [[1,2],[2,3],[3,4]]
-
 print(competition(teams, 4,1))
