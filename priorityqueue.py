@@ -29,3 +29,5 @@ for i in arr:
 while not p.empty():
     node = p.get()
     print(node.a, node.b, node.c)
+
+
